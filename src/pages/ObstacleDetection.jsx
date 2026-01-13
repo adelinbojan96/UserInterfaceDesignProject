@@ -1,7 +1,7 @@
 const ObstacleDetection = () => {
     return (
         <div>
-            <h1 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '10px' }}>Obstacle Detection</h1>
+            <h1 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '10px', fontFamily: "Arial" }}>Obstacle Detection</h1>
             <p style={{ color: '#64748b' }}>
                 Real-time spatial awareness using LiDAR & ultrasonic sensors.
             </p>

@@ -1,8 +1,8 @@
 const Overview = () => {
     return (
         <div style={{ maxWidth: '100%' }}>
-            <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '10px' }}>System Overview</h1>
-            <p style={{ color: '#64748b', fontSize: '14px', lineHeight: '1.4' }}>
+            <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '10px', fontFamily: "Arial" }}>System Overview</h1>
+            <p style={{ color: '#64748b', fontSize: '14px', lineHeight: '1.4', fontFamily: "Arial" }}>
                 Welcome to the Assistive System Dashboard. Select a feature from the menu.
             </p>
 
