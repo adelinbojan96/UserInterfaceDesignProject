@@ -1,5 +1,5 @@
 import { Outlet, Link, useLocation } from 'react-router-dom';
-import menuIcon from './assets/menu_icon.png';
+import {Menu, LucideHand, EyeIcon, ShieldPlus} from 'lucide-react'
 
 const MainLayout = () => {
     const location = useLocation();
@@ -31,7 +31,7 @@ const MainLayout = () => {
                         alignItems: 'center',
                         gap: '8px'
                     }}>
-                        <img src={menuIcon} alt="" style={{ width: '26px', height: '26px' }} />
+                        <Menu size={16} />
                         Overview</Link>
 
                     <div style={{ paddingTop: isMobile ? '0px' : '50px'}} />
@@ -72,7 +72,10 @@ const MainLayout = () => {
                         backgroundColor: location.pathname === '/gesture-commands' ? '#1e213a' : 'transparent',
                         borderRadius: '8px',
                         fontSize: '14px',
-                        whiteSpace: 'nowrap'
+                        whiteSpace: 'nowrap',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px'
                     }}>Gestures</Link>
 
                     <Link to = "/emergency-alert" style={{
