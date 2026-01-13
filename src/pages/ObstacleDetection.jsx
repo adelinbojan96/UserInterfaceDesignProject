@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
 const ObstacleDetection = () => {
-    // State Management
-    const [status, setStatus] = useState('idle'); // 'idle', 'active', 'error'
+
+    const [status, setStatus] = useState('idle'); 
     const [detections, setDetections] = useState([]);
     const [proximity, setProximity] = useState(0);
-    const [battery] = useState(98); // you can set it differently to see what happens when you're low on power
+    const [battery] = useState(98); 
 
-    // Real-world Test Data
+
     const sensorLibrary = [
         { name: "Trash Bin", zone: "Right", type: "Static" },
         { name: "Cleaning Cart", zone: "Center", type: "Hazard" },
@@ -23,7 +23,7 @@ const ObstacleDetection = () => {
             setProximity(0);
             console.log("Voice: System returned to standby.");
         } else {
-            // Check battery before activating
+       
             if (battery >= 15) {
                 setStatus('active');
                 console.log("Haptic: Short confirmation pulse. Voice: Obstacle detection active.");
@@ -53,7 +53,6 @@ const ObstacleDetection = () => {
 
     return (
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-            {/* 1. Module Instructions */}
             <div style={{ 
                 marginBottom: '30px', 
                 padding: '20px', 
@@ -77,7 +76,6 @@ const ObstacleDetection = () => {
                 Real-time spatial awareness using LiDAR and ultrasonic sensor fusion.
             </p>
 
-            {/* 2. Main Action Card */}
             <div style={{ 
                 background: 'white', padding: '40px 20px', borderRadius: '12px', 
                 border: '1px solid #e2e8f0', textAlign: 'center', marginBottom: '20px',
@@ -106,7 +104,6 @@ const ObstacleDetection = () => {
                 </div>
             </div>
 
-            {/* --- 3. ERROR MESSAGE UI (Visible when battery is too low) --- */}
             {status === 'error' && (
                 <div style={{ 
                     padding: '20px', 
@@ -126,8 +123,6 @@ const ObstacleDetection = () => {
                     </p>
                 </div>
             )}
-
-            {/* 4. Live Feedback (Visible during success) */}
             {status === 'active' && (
                 <div style={{ display: 'grid', gap: '20px' }}>
                     <div style={{ background: 'white', padding: '20px', borderRadius: '12px', border: '1px solid #e2e8f0' }}>

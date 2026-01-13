@@ -1,5 +1,5 @@
 import { Outlet, Link, useLocation } from 'react-router-dom';
-import menuIcon from './assets/menu_icon.png';
+import {Menu, LucideHand, EyeIcon, ShieldPlus} from 'lucide-react'
 
 const MainLayout = () => {
     const location = useLocation();
@@ -17,7 +17,7 @@ const MainLayout = () => {
                 padding: '10px',
                 zIndex: 100
             }}>
-                <div style={{ fontWeight: 'bold', marginBottom: isMobile ? '15px' : '30px' }}>Assistive System</div>
+                <div style={{ fontWeight: 'bold', marginBottom: isMobile ? '15px' : '30px', paddingLeft: '15px'}}>Assistive System</div>
                 <div style={{ display: 'flex', flexDirection: isMobile ? 'row' : 'column', gap: '10px', overflowX: 'auto' }}>
                     <Link to="/overview" style={{
                         padding: '10px',
@@ -25,13 +25,13 @@ const MainLayout = () => {
                         color: location.pathname === '/overview' ? 'white' : '#64748b',
                         backgroundColor: location.pathname === '/overview' ? '#1e213a' : 'transparent',
                         borderRadius: '8px',
-                        fontSize: '14px',
+                        fontSize: '16px',
                         whiteSpace: 'nowrap',
                         display: 'flex',
                         alignItems: 'center',
                         gap: '8px'
                     }}>
-                        <img src={menuIcon} alt="" style={{ width: '18px', height: '18px' }} />
+                        <Menu size={16} />
                         Overview</Link>
 
                     <div style={{ paddingTop: isMobile ? '0px' : '50px'}} />
@@ -72,7 +72,10 @@ const MainLayout = () => {
                         backgroundColor: location.pathname === '/gesture-commands' ? '#1e213a' : 'transparent',
                         borderRadius: '8px',
                         fontSize: '14px',
-                        whiteSpace: 'nowrap'
+                        whiteSpace: 'nowrap',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px'
                     }}>Gestures</Link>
 
                     <Link to = "/emergency-alert" style={{
@@ -123,8 +126,8 @@ const MainLayout = () => {
                     <Link to = "/enironmental-awareness" style={{
                         padding: '10px',
                         textDecoration: 'none',
-                        color: location.pathname === '/enironmental-awareness' ? 'white' : '#64748b',
-                        backgroundColor: location.pathname === '/enironmental-awareness' ? '#1e213a' : 'transparent',
+                        color: location.pathname === '/environmental-awareness' ? 'white' : '#64748b',
+                        backgroundColor: location.pathname === '/environmental-awareness' ? '#1e213a' : 'transparent',
                         borderRadius: '8px',
                         fontSize: '14px',
                         whiteSpace: 'nowrap'
