@@ -123,7 +123,7 @@ const MainLayout = () => {
                     }}
                     >Terrain Detection</Link>
 
-                    <Link to = "/enironmental-awareness" style={{
+                    <Link to = "/environmental-awareness" style={{
                         padding: '10px',
                         textDecoration: 'none',
                         color: location.pathname === '/environmental-awareness' ? 'white' : '#64748b',
