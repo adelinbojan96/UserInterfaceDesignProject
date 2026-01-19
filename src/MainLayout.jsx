@@ -1,9 +1,35 @@
 import { Outlet, Link, useLocation } from 'react-router-dom';
-import {Menu, LucideHand, EyeIcon, ShieldPlus} from 'lucide-react'
+
+import {
+    Menu,
+    LucideHand,
+    EyeIcon,
+    ShieldPlus,
+    TriangleAlert,
+    Mic,
+    Map,
+    Route,
+    Mountain,
+    Sun
+} from 'lucide-react';
 
 const MainLayout = () => {
     const location = useLocation();
     const isMobile = window.innerWidth < 768;
+
+    const linkStyle = (path) => ({
+        padding: '10px',
+        textDecoration: 'none',
+        color: location.pathname === path ? 'white' : '#64748b',
+        backgroundColor: location.pathname === path ? '#1e213a' : 'transparent',
+        borderRadius: '8px',
+        fontSize: '14px',
+        whiteSpace: 'nowrap',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '10px',
+        transition: 'all 0.2s'
+    });
 
     return (
         <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', minHeight: '100vh' }}>
@@ -15,124 +41,68 @@ const MainLayout = () => {
                 borderRight: isMobile ? 'none' : '1px solid #e2e8f0',
                 borderBottom: isMobile ? '1px solid #e2e8f0' : 'none',
                 padding: '10px',
-                zIndex: 100
+                zIndex: 100,
+                overflowY: 'auto'
             }}>
-                <div style={{ fontWeight: 'bold', marginBottom: isMobile ? '15px' : '30px', paddingLeft: '15px'}}>Assistive System</div>
-                <div style={{ display: 'flex', flexDirection: isMobile ? 'row' : 'column', gap: '10px', overflowX: 'auto' }}>
-                    <Link to="/overview" style={{
-                        padding: '10px',
-                        textDecoration: 'none',
-                        color: location.pathname === '/overview' ? 'white' : '#64748b',
-                        backgroundColor: location.pathname === '/overview' ? '#1e213a' : 'transparent',
-                        borderRadius: '8px',
-                        fontSize: '16px',
-                        whiteSpace: 'nowrap',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '8px'
-                    }}>
-                        <Menu size={16} />
-                        Overview</Link>
+                <div style={{ fontWeight: 'bold', marginBottom: isMobile ? '15px' : '30px', paddingLeft: '15px'}}>
+                    Assistive System
+                </div>
 
-                    <div style={{ paddingTop: isMobile ? '0px' : '50px'}} />
-                    <Link to="/obstacle-detection" style={{
-                        padding: '10px',
-                        textDecoration: 'none',
-                        color: location.pathname === '/obstacle-detection' ? 'white' : '#64748b',
-                        backgroundColor: location.pathname === '/obstacle-detection' ? '#1e213a' : 'transparent',
-                        borderRadius: '8px',
-                        fontSize: '14px',
-                        whiteSpace: 'nowrap'
-                    }}>Obstacle Detection</Link>
+                <div style={{ display: 'flex', flexDirection: isMobile ? 'row' : 'column', gap: '8px', overflowX: isMobile ? 'auto' : 'visible' }}>
 
-                    <Link to="/voice-navigation" style={{
-                        padding: '10px',
-                        textDecoration: 'none',
-                        color: location.pathname === '/voice-navigation' ? 'white' : '#64748b',
-                        backgroundColor: location.pathname === '/voice-navigation' ? '#1e213a' : 'transparent',
-                        borderRadius: '8px',
-                        fontSize: '14px',
-                        whiteSpace: 'nowrap'
-                    }}>Voice Navigation</Link>
+                    <Link to="/overview" style={linkStyle('/overview')}>
+                        <Menu size={18} />
+                        Overview
+                    </Link>
 
-                    <Link to="/indoor-mapping" style={{
-                        padding: '10px',
-                        textDecoration: 'none',
-                        color: location.pathname === '/indoor-mapping' ? 'white' : '#64748b',
-                        backgroundColor: location.pathname === '/indoor-mapping' ? '#1e213a' : 'transparent',
-                        borderRadius: '8px',
-                        fontSize: '14px',
-                        whiteSpace: 'nowrap'
-                    }}>Indoor Mapping</Link>
+                    <div style={{ paddingTop: isMobile ? '0px' : '30px', borderBottom: isMobile ? 'none' : '1px solid #f1f5f9', marginBottom: isMobile ? '0' : '10px' }} />
+                    {(!isMobile) && <div style={{ fontSize: '12px', color: '#94a3b8', paddingLeft: '10px', marginBottom: '5px', textTransform: 'uppercase', fontWeight: 'bold' }}>Features</div>}
 
-                    <Link to = "/gesture-commands" style={{
-                        padding: '10px',
-                        textDecoration: 'none',
-                        color: location.pathname === '/gesture-commands' ? 'white' : '#64748b',
-                        backgroundColor: location.pathname === '/gesture-commands' ? '#1e213a' : 'transparent',
-                        borderRadius: '8px',
-                        fontSize: '14px',
-                        whiteSpace: 'nowrap',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '8px'
-                    }}>Gestures</Link>
 
-                    <Link to = "/emergency-alert" style={{
-                        padding: '10px',
-                        textDecoration: 'none',
-                        color: location.pathname === '/emergency-alert' ? 'white' : '#64748b',
-                        backgroundColor: location.pathname === '/emergency-alert' ? '#1e213a' : 'transparent',
-                        borderRadius: '8px',
-                        fontSize: '14px',
-                        whiteSpace: 'nowrap'
-                    }}
-                    >Emergency Alerts</Link>
+                    <Link to="/obstacle-detection" style={linkStyle('/obstacle-detection')}>
+                        <TriangleAlert size={18} />
+                        Obstacle Detection
+                    </Link>
 
-                    <Link to = "/object-recognition" style={{
-                        padding: '10px',
-                        textDecoration: 'none',
-                        color: location.pathname === '/object-recognition' ? 'white' : '#64748b',
-                        backgroundColor: location.pathname === '/object-recognition' ? '#1e213a' : 'transparent',
-                        borderRadius: '8px',
-                        fontSize: '14px',
-                        whiteSpace: 'nowrap'
-                    }}
-                    >Object Recognition</Link>
+                    <Link to="/voice-navigation" style={linkStyle('/voice-navigation')}>
+                        <Mic size={18} />
+                        Voice Navigation
+                    </Link>
 
-                    <Link to = "/path-smoothing" style={
-                        {
-                        padding: '10px',
-                        textDecoration: 'none',
-                        color: location.pathname === '/path-smoothing' ? 'white' : '#64748b',
-                        backgroundColor: location.pathname === '/path-smoothing' ? '#1e213a' : 'transparent',
-                        borderRadius: '8px',
-                        fontSize: '14px',
-                        whiteSpace: 'nowrap'
-                    }}
-                    >Path Smoothing</Link>
+                    <Link to="/indoor-mapping" style={linkStyle('/indoor-mapping')}>
+                        <Map size={18} />
+                        Indoor Mapping
+                    </Link>
 
-                    <Link to = "/terrain-detection" style={{
-                        padding: '10px',
-                        textDecoration: 'none',
-                        color: location.pathname === '/terrain-detection' ? 'white' : '#64748b',
-                        backgroundColor: location.pathname === '/terrain-detection' ? '#1e213a' : 'transparent',
-                        borderRadius: '8px',
-                        fontSize: '14px',
-                        whiteSpace: 'nowrap'
-                    }}
-                    >Terrain Detection</Link>
+                    <Link to="/gesture-commands" style={linkStyle('/gesture-commands')}>
+                        <LucideHand size={18} />
+                        Gestures
+                    </Link>
 
-                    <Link to = "/environmental-awareness" style={{
-                        padding: '10px',
-                        textDecoration: 'none',
-                        color: location.pathname === '/environmental-awareness' ? 'white' : '#64748b',
-                        backgroundColor: location.pathname === '/environmental-awareness' ? '#1e213a' : 'transparent',
-                        borderRadius: '8px',
-                        fontSize: '14px',
-                        whiteSpace: 'nowrap'
-                    }}
-                    >Environmental Awareness</Link>
+                    <Link to="/emergency-alert" style={linkStyle('/emergency-alert')}>
+                        <ShieldPlus size={18} />
+                        Emergency Alerts
+                    </Link>
+
+                    <Link to="/object-recognition" style={linkStyle('/object-recognition')}>
+                        <EyeIcon size={18} />
+                        Object Recognition
+                    </Link>
+
+                    <Link to="/path-smoothing" style={linkStyle('/path-smoothing')}>
+                        <Route size={18} />
+                        Path Smoothing
+                    </Link>
+
+                    <Link to="/terrain-detection" style={linkStyle('/terrain-detection')}>
+                        <Mountain size={18} />
+                        Terrain Detection
+                    </Link>
+
+                    <Link to="/environmental-awareness" style={linkStyle('/environmental-awareness')}>
+                        <Sun size={18} />
+                        Env. Awareness
+                    </Link>
                 </div>
             </nav>
 
